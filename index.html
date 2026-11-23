@@ -1,0 +1,2411 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ailton Carvalho de Albuquerque | Ciência de Dados e Cibersegurança</title>
+  <meta name="description" content="Portfólio profissional de Ailton Carvalho de Albuquerque — Estudante de TI com foco em Ciência de Dados, Cibersegurança, Redes, Infraestrutura e Suporte Técnico." />
+  <meta name="author" content="Ailton Carvalho de Albuquerque" />
+
+  <!-- Open Graph / Compartilhamento Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="Ailton Carvalho de Albuquerque | Ciência de Dados e Cibersegurança" />
+  <meta property="og:description" content="Estudante de TI em Ciência de Dados e Cibersegurança com experiência em suporte técnico N1/S2S e laboratórios de redes, firewalls, monitoramento e análise de dados." />
+  <meta property="og:image" content="assets/img/ailton-perfil.jpeg" />
+
+  <!-- Google Fonts: Poppins (Títulos) + Plus Jakarta Sans (Texto) + JetBrains Mono (Dados técnicos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Paleta e tokens */
+    :root {
+      --bg-canvas: #070d1a;
+      --bg-surface: #0d172b;
+      --bg-surface-alt: #12203b;
+      --bg-chip: rgba(56, 189, 248, 0.08);
+      --header-bg: rgba(7, 13, 26, 0.84);
+
+      --border-subtle: rgba(148, 163, 184, 0.16);
+      --border-strong: rgba(56, 189, 248, 0.42);
+      --shadow-card: 0 10px 30px -12px rgba(2, 6, 23, 0.65);
+
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --accent-text: #38bdf8;
+      --accent-on-solid: #04101d;
+
+      --font-display: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --container-max: 1160px;
+      --header-height: 68px;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="light"] {
+      --bg-canvas: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-alt: #f1f5f9;
+      --bg-chip: rgba(2, 132, 199, 0.08);
+      --header-bg: rgba(248, 250, 252, 0.88);
+
+      --border-subtle: rgba(15, 23, 42, 0.1);
+      --border-strong: rgba(2, 132, 199, 0.45);
+      --shadow-card: 0 12px 28px -12px rgba(15, 23, 42, 0.1);
+
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #475569;
+
+      --accent: #0284c7;
+      --accent-hover: #0369a1;
+      --accent-text: #0369a1;
+      --accent-on-solid: #ffffff;
+    }
+
+    /* Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-height) + 20px);
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      background-color: var(--bg-canvas);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color 0.25s var(--ease-out), color 0.25s var(--ease-out);
+      overflow-x: hidden;
+    }
+
+    [data-theme="dark"] body {
+      letter-spacing: 0.005em;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding-inline: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding-inline: 32px;
+      }
+    }
+
+    /* Header e navegação */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      background-color: var(--header-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 50;
+      transition: background-color 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
+    }
+
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav-desktop {
+      display: none;
+      align-items: center;
+      gap: 24px;
+    }
+
+    @media (min-width: 960px) {
+      .nav-desktop {
+        display: flex;
+      }
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      flex-shrink: 0;
+      position: relative;
+      padding-block: 6px;
+      transition: color 0.18s var(--ease-out);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background-color: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s var(--ease-out);
+    }
+
+    .nav-link:hover,
+    .nav-link.is-active {
+      color: var(--text-primary);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.is-active::after {
+      transform: scaleX(1);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-surface);
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.18s var(--ease-out), background-color 0.18s var(--ease-out), transform 0.18s var(--ease-out);
+    }
+
+    .icon-btn:hover {
+      border-color: var(--border-strong);
+      background-color: var(--bg-surface-alt);
+    }
+
+    .icon-btn:active {
+      transform: scale(0.96);
+    }
+
+    .menu-toggle {
+      display: inline-flex;
+    }
+
+    @media (min-width: 960px) {
+      .menu-toggle {
+        display: none;
+      }
+    }
+
+    [data-theme="dark"] .icon-sun { display: block; }
+    [data-theme="dark"] .icon-moon { display: none; }
+    [data-theme="light"] .icon-sun { display: none; }
+    [data-theme="light"] .icon-moon { display: block; }
+
+    /* Drawer mobile */
+    .mobile-drawer {
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      right: 0;
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      padding: 16px 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      z-index: 45;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px);
+      transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+    }
+
+    .mobile-drawer.is-open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .mobile-drawer .nav-link {
+      display: block;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+    }
+
+    .mobile-drawer .nav-link::after {
+      display: none;
+    }
+
+    .mobile-drawer .nav-link:hover,
+    .mobile-drawer .nav-link:active {
+      background-color: var(--bg-surface-alt);
+    }
+
+    @media (min-width: 960px) {
+      .mobile-drawer {
+        display: none;
+      }
+    }
+
+    /* Layout das seções */
+    main {
+      padding-top: var(--header-height);
+    }
+
+    .section {
+      padding-block: 72px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    @media (min-width: 768px) {
+      .section {
+        padding-block: 92px;
+      }
+    }
+
+    .section-header {
+      margin-bottom: 40px;
+      max-width: 680px;
+    }
+
+    .section-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--accent-text);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.65rem, 3vw, 2.25rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+
+    .section-subtitle {
+      margin-top: 12px;
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 60ch;
+    }
+
+    /* Botões padrão */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 24px;
+      min-height: 46px;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background-color 0.18s var(--ease-out), border-color 0.18s var(--ease-out), transform 0.18s var(--ease-out), color 0.18s var(--ease-out);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: var(--accent-on-solid);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-surface);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--border-strong);
+      background-color: var(--bg-surface-alt);
+    }
+
+    /* Hero */
+    .hero {
+      padding-block: 56px 72px;
+    }
+
+    @media (min-width: 960px) {
+      .hero {
+        padding-block: 84px 96px;
+      }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (min-width: 960px) {
+      .hero-grid {
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 56px;
+      }
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--accent-text);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.15rem, 4.4vw, 3.35rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      text-wrap: balance;
+      margin-bottom: 14px;
+    }
+
+    .hero-role {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .hero-lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 58ch;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-media {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-photo-frame {
+      width: 100%;
+      max-width: 340px;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--radius-lg);
+      padding: 8px;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+
+    @media (min-width: 960px) {
+      .hero-photo-frame {
+        max-width: 380px;
+      }
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 14%;
+      border-radius: calc(var(--radius-lg) - 8px);
+      background-color: var(--bg-surface-alt);
+    }
+
+    /* Sobre */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .about-grid {
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 52px;
+      }
+    }
+
+    .about-photo-frame {
+      width: 100%;
+      max-width: 360px;
+      margin-inline: auto;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-surface);
+      box-shadow: var(--shadow-card);
+    }
+
+    .about-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+    }
+
+    .about-prose {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+
+    .strengths-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 540px) {
+      .strengths-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .strength-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      transition: border-color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+    }
+
+    .strength-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+    }
+
+    .strength-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .strength-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Habilidades */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 680px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1080px) {
+      .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .skill-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+    }
+
+    .skill-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+    }
+
+    .skill-card-title {
+      font-family: var(--font-display);
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .chip {
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background-color: var(--bg-chip);
+      border: 1px solid var(--border-subtle);
+      padding: 5px 11px;
+      border-radius: 999px;
+      line-height: 1.35;
+    }
+
+    /* Experiência */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+      max-width: 820px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background-color: var(--border-subtle);
+    }
+
+    .timeline-item {
+      position: relative;
+    }
+
+    .timeline-node {
+      position: absolute;
+      left: -28px;
+      top: 6px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: var(--bg-canvas);
+      border: 3px solid var(--accent);
+    }
+
+    .timeline-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .timeline-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px 16px;
+      margin-bottom: 16px;
+    }
+
+    .timeline-role {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .timeline-company {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--accent-text);
+      margin-top: 2px;
+    }
+
+    .timeline-period {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-muted);
+    }
+
+    .timeline-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .timeline-list li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--text-secondary);
+    }
+
+    .timeline-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--accent);
+    }
+
+    /* Projetos */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .project-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+      transition: border-color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+    }
+
+    .project-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+    }
+
+    .project-category {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent-text);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .project-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .project-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .project-context {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Formação e idiomas */
+    .education-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .education-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .edu-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .edu-type {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent-text);
+    }
+
+    .edu-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .edu-institution {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .edu-status {
+      margin-top: auto;
+      padding-top: 10px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Contato */
+    .contact-panel {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      box-shadow: var(--shadow-card);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    @media (min-width: 820px) {
+      .contact-panel {
+        padding: 44px;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 40px;
+      }
+    }
+
+    .contact-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.8vw, 2rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 12px;
+      text-wrap: balance;
+    }
+
+    .contact-text {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      max-width: 52ch;
+    }
+
+    .contact-email-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .email-link {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--accent-text);
+      font-weight: 500;
+      word-break: break-all;
+    }
+
+    .email-link:hover {
+      text-decoration: underline;
+    }
+
+    .copy-btn {
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 7px 12px;
+      min-height: 36px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-surface-alt);
+      color: var(--text-primary);
+      transition: border-color 0.18s var(--ease-out);
+    }
+
+    .copy-btn:hover {
+      border-color: var(--border-strong);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-card-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-surface-alt);
+      color: var(--text-primary);
+      font-weight: 600;
+      transition: border-color 0.18s var(--ease-out), transform 0.18s var(--ease-out);
+    }
+
+    .contact-card-link:hover {
+      border-color: var(--border-strong);
+      transform: translateX(3px);
+    }
+
+    .contact-card-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-card-hint {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    /* Rodapé */
+    .site-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding-block: 32px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    @media (min-width: 640px) {
+      .footer-inner {
+        flex-direction: row;
+      }
+    }
+
+    /* Laboratório interativo */
+    .lab-shell {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+    }
+
+    @media (min-width: 900px) {
+      .lab-shell {
+        grid-template-columns: 310px 1fr;
+        gap: 32px;
+        padding: 32px;
+        align-items: start;
+      }
+    }
+
+    .miniature-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+      padding: 20px;
+      border-radius: var(--radius-md);
+      background-color: var(--bg-surface-alt);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .miniature-stage {
+      position: relative;
+      width: 176px;
+      height: 196px;
+      border-radius: var(--radius-md);
+      background: radial-gradient(circle at 50% 35%, var(--bg-chip), transparent 72%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s var(--ease-out);
+    }
+
+    .miniature-stage:hover {
+      transform: translateY(-2px);
+    }
+
+    .miniature-svg {
+      width: 160px;
+      height: 184px;
+      overflow: visible;
+    }
+
+    .miniature-speech {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      width: 100%;
+    }
+
+    .miniature-hint {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .lab-workbench {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      min-width: 0;
+    }
+
+    .lab-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-surface-alt);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .lab-tab {
+      flex: 1 1 auto;
+      padding: 10px 14px;
+      min-height: 40px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+      transition: background-color 0.18s var(--ease-out), color 0.18s var(--ease-out);
+    }
+
+    .lab-tab:hover {
+      color: var(--text-primary);
+    }
+
+    .lab-tab.is-active {
+      background-color: var(--accent);
+      color: var(--accent-on-solid);
+    }
+
+    .lab-pane {
+      display: none;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .lab-pane.is-active {
+      display: flex;
+    }
+
+    .lab-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .seg-btn {
+      padding: 8px 14px;
+      min-height: 38px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-surface-alt);
+      color: var(--text-secondary);
+      font-size: 0.84rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: border-color 0.18s var(--ease-out), background-color 0.18s var(--ease-out), color 0.18s var(--ease-out);
+    }
+
+    .seg-btn:hover {
+      border-color: var(--border-strong);
+      color: var(--text-primary);
+    }
+
+    .seg-btn.is-active {
+      background-color: var(--bg-chip);
+      border-color: var(--accent);
+      color: var(--accent-text);
+    }
+
+    .cidr-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @media (min-width: 600px) {
+      .cidr-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .metric-box {
+      background-color: var(--bg-surface-alt);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+    }
+
+    .metric-label {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-primary);
+      word-break: break-word;
+    }
+
+    .packet-result {
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-surface-alt);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .packet-status {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent-text);
+    }
+
+    .packet-detail {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .chart-frame {
+      background-color: var(--bg-surface-alt);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+    }
+
+    .chart-caption {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .eda-svg {
+      width: 100%;
+      height: 170px;
+      display: block;
+    }
+
+    .checklist-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-surface-alt);
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      transition: border-color 0.18s var(--ease-out), background-color 0.18s var(--ease-out);
+    }
+
+    .check-item:hover {
+      border-color: var(--border-strong);
+    }
+
+    .check-item.is-checked {
+      border-color: var(--accent);
+      background-color: var(--bg-chip);
+      color: var(--text-primary);
+    }
+
+    .check-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      border: 2px solid var(--border-strong);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--accent-on-solid);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .check-item.is-checked .check-box {
+      background-color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* Animação ao rolar */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#inicio" class="brand">Ailton Albuquerque</a>
+
+      <nav class="nav-desktop" aria-label="Navegação principal">
+        <a href="#inicio" class="nav-link is-active">Início</a>
+        <a href="#sobre" class="nav-link">Sobre</a>
+        <a href="#habilidades" class="nav-link">Habilidades</a>
+        <a href="#experiencia" class="nav-link">Experiência</a>
+        <a href="#projetos" class="nav-link">Projetos</a>
+        <a href="#formacao" class="nav-link">Formação</a>
+        <a href="#contato" class="nav-link">Contato</a>
+      </nav>
+
+      <div class="header-actions">
+        <button
+          id="theme-toggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Alternar entre tema escuro e claro"
+          title="Alternar tema"
+        >
+          <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+
+        <button
+          id="menu-toggle"
+          class="icon-btn menu-toggle"
+          type="button"
+          aria-label="Abrir menu de navegação"
+          aria-expanded="false"
+          aria-controls="mobile-drawer"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Mobile -->
+  <nav id="mobile-drawer" class="mobile-drawer" aria-label="Navegação mobile">
+    <a href="#inicio" class="nav-link">Início</a>
+    <a href="#sobre" class="nav-link">Sobre</a>
+    <a href="#habilidades" class="nav-link">Habilidades</a>
+    <a href="#experiencia" class="nav-link">Experiência</a>
+    <a href="#projetos" class="nav-link">Projetos</a>
+    <a href="#formacao" class="nav-link">Formação</a>
+    <a href="#contato" class="nav-link">Contato</a>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="hero-meta">Taubaté, SP · Dados, Infraestrutura e Segurança</p>
+          <h1 class="hero-title">Ailton Carvalho de Albuquerque</h1>
+          <p class="hero-role">Estudante de TI | Ciência de Dados e Cibersegurança</p>
+          <p class="hero-lead">
+            Uno experiência prática em suporte técnico N1 e S2S a laboratórios de infraestrutura, firewalls, monitoramento e análise exploratória de dados com Python e SQL.
+          </p>
+          <div class="hero-actions">
+            <a href="#projetos" class="btn btn-primary">Ver projetos</a>
+            <a href="#contato" class="btn btn-secondary">Entrar em contato</a>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="hero-photo-frame">
+            <img
+              src="assets/img/ailton-perfil.jpeg"
+              alt="Foto profissional de Ailton Carvalho de Albuquerque vestindo terno"
+              class="hero-photo"
+              loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker">Sobre mim</span>
+          <h2 class="section-title">Base técnica sólida entre infraestrutura, segurança e dados</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-photo-frame reveal">
+            <img
+              src="assets/img/ailton-sobre.jpeg"
+              alt="Retrato de Ailton Carvalho de Albuquerque sorrindo em traje social"
+              class="about-photo"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="reveal">
+            <div class="about-prose">
+              <p>
+                Sou estudante de TI com formação em andamento em Ciência de Dados e Cibersegurança, além de experiência profissional atuando em suporte técnico N1 e suporte S2S.
+              </p>
+              <p>
+                Direciono meu aprendizado para redes, segurança da informação, análise de dados e resolução de problemas. Em paralelo à graduação e aos estudos técnicos, desenvolvo prática em laboratórios de infraestrutura com configuração de firewalls, monitoramento de ambiente e virtualização.
+              </p>
+            </div>
+
+            <div class="strengths-grid">
+              <article class="strength-card">
+                <h3 class="strength-title">Perfil analítico</h3>
+                <p class="strength-desc">Leitura estruturada de cenários técnicos, análise exploratória de dados e identificação de causas raiz.</p>
+              </article>
+              <article class="strength-card">
+                <h3 class="strength-title">Raciocínio lógico</h3>
+                <p class="strength-desc">Abordagem metódica para diagnóstico de conectividade, regras de firewall e consultas em SQL e Python.</p>
+              </article>
+              <article class="strength-card">
+                <h3 class="strength-title">Boa comunicação</h3>
+                <p class="strength-desc">Atendimento claro com usuários finais, registro preciso de ocorrências e alinhamento no suporte S2S.</p>
+              </article>
+              <article class="strength-card">
+                <h3 class="strength-title">Resolução de problemas</h3>
+                <p class="strength-desc">Foco prático na investigação de incidentes envolvendo hardware, software, sistemas e redes.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Habilidades -->
+    <section id="habilidades" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker">Habilidades técnicas</span>
+          <h2 class="section-title">Competências organizadas por área de atuação</h2>
+          <p class="section-subtitle">
+            Tecnologias e fundamentos aplicados na prática acadêmica, em laboratórios de infraestrutura e no atendimento de suporte técnico.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Redes -->
+          <article class="skill-card reveal">
+            <h3 class="skill-card-title">Redes</h3>
+            <ul class="chip-list">
+              <li class="chip">Modelos OSI e TCP/IP</li>
+              <li class="chip">Pontos de rede</li>
+              <li class="chip">Clipagem de cabos RJ45</li>
+              <li class="chip">Keystone</li>
+              <li class="chip">VLANs</li>
+              <li class="chip">Switches gerenciáveis</li>
+              <li class="chip">Gerenciamento de roteadores</li>
+              <li class="chip">CIDR (sub-redes /25 e /26)</li>
+              <li class="chip">DNS</li>
+            </ul>
+          </article>
+
+          <!-- Segurança -->
+          <article class="skill-card reveal">
+            <h3 class="skill-card-title">Segurança</h3>
+            <ul class="chip-list">
+              <li class="chip">Firewall NGFW</li>
+              <li class="chip">IPFire</li>
+              <li class="chip">OPNsense com hardening</li>
+              <li class="chip">Bloqueio de anúncios com Pi-hole</li>
+            </ul>
+          </article>
+
+          <!-- Monitoramento e Virtualização -->
+          <article class="skill-card reveal">
+            <h3 class="skill-card-title">Monitoramento e Virtualização</h3>
+            <ul class="chip-list">
+              <li class="chip">Implementação de Zabbix</li>
+              <li class="chip">Máquinas virtuais</li>
+              <li class="chip">Oracle VirtualBox</li>
+            </ul>
+          </article>
+
+          <!-- Sistemas -->
+          <article class="skill-card reveal">
+            <h3 class="skill-card-title">Sistemas</h3>
+            <ul class="chip-list">
+              <li class="chip">Linux</li>
+              <li class="chip">Funcionamento de hardware</li>
+              <li class="chip">Funcionamento de software</li>
+            </ul>
+          </article>
+
+          <!-- Dados e Programação -->
+          <article class="skill-card reveal">
+            <h3 class="skill-card-title">Dados e Programação</h3>
+            <ul class="chip-list">
+              <li class="chip">SQL</li>
+              <li class="chip">MySQL</li>
+              <li class="chip">Python (básico/intermediário)</li>
+              <li class="chip">Excel (intermediário)</li>
+              <li class="chip">pandas</li>
+              <li class="chip">matplotlib</li>
+            </ul>
+          </article>
+
+          <!-- Análise Exploratória e Estatística -->
+          <article class="skill-card reveal">
+            <h3 class="skill-card-title">Análise Exploratória e Estatística</h3>
+            <ul class="chip-list">
+              <li class="chip">Análise Univariada/Multivariada</li>
+              <li class="chip">Detecção de Outliers</li>
+              <li class="chip">Tratamento de Dados Faltantes</li>
+              <li class="chip">Análise de Correlação</li>
+              <li class="chip">Estatística Descritiva (Média, Mediana, Moda, Desvio Padrão, Variância)</li>
+              <li class="chip">Análise de Distribuição</li>
+              <li class="chip">Correlação (Pearson/Spearman)</li>
+              <li class="chip">Intervalos de Confiança</li>
+              <li class="chip">Testes de Hipóteses</li>
+            </ul>
+          </article>
+
+          <!-- Windows Server -->
+          <article class="skill-card reveal">
+            <h3 class="skill-card-title">Windows Server</h3>
+            <ul class="chip-list">
+              <li class="chip">Permissões NTFS</li>
+              <li class="chip">Criação de diretórios</li>
+              <li class="chip">Domínios</li>
+              <li class="chip">Restrição de acessos</li>
+              <li class="chip">Segurança</li>
+            </ul>
+          </article>
+
+          <!-- Hadoop -->
+          <article class="skill-card reveal">
+            <h3 class="skill-card-title">Hadoop</h3>
+            <ul class="chip-list">
+              <li class="chip">Visualização de dados</li>
+              <li class="chip">Ordenanças</li>
+              <li class="chip">Utilização do PuTTY</li>
+              <li class="chip">Ambari</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Laboratório interativo -->
+    <section id="laboratorio" class="section" aria-label="Experiência interativa">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker">Experiência interativa</span>
+          <h2 class="section-title">Explore meu perfil na prática</h2>
+          <p class="section-subtitle">
+            Interaja com a minha miniatura e teste simuladores baseados nas ferramentas do meu currículo: sub-redes CIDR, análise de outliers e diagnóstico de suporte N1.
+          </p>
+        </div>
+
+        <div class="lab-shell reveal">
+          <aside class="miniature-panel">
+            <div
+              id="miniature-stage"
+              class="miniature-stage"
+              role="button"
+              tabindex="0"
+              aria-label="Miniatura interativa de Ailton Carvalho. Clique para ver uma observação técnica."
+            >
+              <svg class="miniature-svg" viewBox="0 0 180 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <ellipse cx="90" cy="188" rx="46" ry="7" fill="rgba(2, 6, 23, 0.28)" />
+                <path d="M40 184C40 151 56 135 90 135C124 135 140 151 140 184H40Z" fill="#8D523E" />
+                <path d="M90 135L74 184H106L90 135Z" fill="#774231" />
+                <path d="M77 135L90 169L103 135H77Z" fill="#F8FAFC" />
+                <path d="M75 133L86 144L90 136L78 128Z" fill="#E2E8F0" />
+                <path d="M105 133L94 144L90 136L102 128Z" fill="#E2E8F0" />
+                <path d="M87 139H93L95 164L90 173L85 164L87 139Z" fill="#4E2A1E" />
+                <path d="M74 135L65 152L76 164L82 145Z" fill="#774231" />
+                <path d="M106 135L115 152L104 164L98 145Z" fill="#774231" />
+                <rect x="81" y="114" width="18" height="22" rx="8" fill="#E8B89A" />
+
+                <g id="miniature-head">
+                  <ellipse cx="55" cy="87" rx="5.5" ry="9" fill="#DDA989" />
+                  <ellipse cx="125" cy="87" rx="5.5" ry="9" fill="#DDA989" />
+                  <rect x="57" y="45" width="66" height="77" rx="31" fill="#F0C2A4" />
+                  <path d="M55 72C53 50 67 34 90 34C113 34 127 50 125 72C123 61 116 55 107 54C101 59 95 57 90 54C84 58 77 58 72 54C63 55 57 62 55 72Z" fill="#1E293B" />
+                  <circle cx="72" cy="43" r="8" fill="#1E293B" />
+                  <circle cx="86" cy="39" r="9" fill="#1E293B" />
+                  <circle cx="101" cy="41" r="8.5" fill="#1E293B" />
+                  <circle cx="113" cy="49" r="7" fill="#1E293B" />
+                  <circle cx="65" cy="50" r="6.5" fill="#1E293B" />
+                  <path d="M68 72C72 69 78 69 82 71" stroke="#1E293B" stroke-width="3" stroke-linecap="round" />
+                  <path d="M98 71C102 69 108 69 112 72" stroke="#1E293B" stroke-width="3" stroke-linecap="round" />
+                  <g id="miniature-eyes">
+                    <circle cx="75" cy="80" r="4.2" fill="#0F172A" />
+                    <circle cx="105" cy="80" r="4.2" fill="#0F172A" />
+                    <circle cx="76.3" cy="78.6" r="1.4" fill="#FFFFFF" />
+                    <circle cx="106.3" cy="78.6" r="1.4" fill="#FFFFFF" />
+                  </g>
+                  <path d="M81 103C86 107 94 107 99 103" stroke="#7C3F2C" stroke-width="2.4" stroke-linecap="round" />
+                </g>
+
+                <g id="miniature-badge">
+                  <rect x="112" y="142" width="44" height="32" rx="8" fill="#0D172B" stroke="#38BDF8" stroke-width="2" />
+                  <path id="miniature-badge-icon" d="M134 149L142 153V159C142 164 138.5 167.5 134 169C129.5 167.5 126 164 126 159V153L134 149Z" stroke="#38BDF8" stroke-width="2" stroke-linejoin="round" />
+                </g>
+              </svg>
+            </div>
+
+            <p id="miniature-speech" class="miniature-speech">
+              Selecione uma sub-rede ou regra ao lado para ver como estruturo redes segmentadas e seguras.
+            </p>
+            <span class="miniature-hint">Clique na miniatura para alternar dicas</span>
+          </aside>
+
+          <!-- Bancada Interativa com 3 Abas -->
+          <div class="lab-workbench">
+            <div class="lab-tabs" role="tablist" aria-label="Áreas técnicas interativas">
+              <button class="lab-tab is-active" type="button" role="tab" aria-selected="true" data-lab-tab="redes">
+                Redes &amp; Firewall
+              </button>
+              <button class="lab-tab" type="button" role="tab" aria-selected="false" data-lab-tab="dados">
+                Dados &amp; Outliers
+              </button>
+              <button class="lab-tab" type="button" role="tab" aria-selected="false" data-lab-tab="suporte">
+                Diagnóstico N1 / S2S
+              </button>
+            </div>
+
+            <!-- ABA 1: REDES & FIREWALL -->
+            <div class="lab-pane is-active" data-lab-pane="redes">
+              <div>
+                <p class="metric-label">Calculadora prática de sub-redes CIDR (base 192.168.10.0)</p>
+                <div class="lab-controls">
+                  <button class="seg-btn" type="button" data-cidr="24">Sub-rede /24</button>
+                  <button class="seg-btn is-active" type="button" data-cidr="25">Sub-rede /25</button>
+                  <button class="seg-btn" type="button" data-cidr="26">Sub-rede /26</button>
+                </div>
+              </div>
+
+              <div class="cidr-grid">
+                <div class="metric-box">
+                  <span class="metric-label">Máscara</span>
+                  <span id="cidr-mask" class="metric-value">255.255.255.128</span>
+                </div>
+                <div class="metric-box">
+                  <span class="metric-label">Hosts utilizáveis</span>
+                  <span id="cidr-hosts" class="metric-value">126</span>
+                </div>
+                <div class="metric-box">
+                  <span class="metric-label">Faixa válida</span>
+                  <span id="cidr-range" class="metric-value">.1 – .126</span>
+                </div>
+                <div class="metric-box">
+                  <span class="metric-label">Broadcast</span>
+                  <span id="cidr-broadcast" class="metric-value">192.168.10.127</span>
+                </div>
+              </div>
+
+              <div>
+                <p class="metric-label">Simular regra de tráfego (OPNsense + Pi-hole)</p>
+                <div class="lab-controls">
+                  <button class="seg-btn is-active" type="button" data-packet="https">HTTPS (443)</button>
+                  <button class="seg-btn" type="button" data-packet="dns">DNS / Anúncios (53)</button>
+                  <button class="seg-btn" type="button" data-packet="ssh">SSH Externo (22)</button>
+                </div>
+              </div>
+
+              <div class="packet-result">
+                <span id="packet-status" class="packet-status">Status: Permitido na VLAN interna</span>
+                <p id="packet-detail" class="packet-detail">
+                  Tráfego web criptografado liberado pela política de saída do firewall NGFW após inspeção de estado.
+                </p>
+              </div>
+            </div>
+
+            <!-- ABA 2: ANÁLISE EXPLORATÓRIA & ESTATÍSTICA -->
+            <div class="lab-pane" data-lab-pane="dados">
+              <div class="lab-controls">
+                <button id="toggle-outlier-btn" class="seg-btn is-active" type="button">Remover outlier (89)</button>
+                <button id="toggle-line-btn" class="seg-btn" type="button">Mostrar mediana no gráfico</button>
+              </div>
+
+              <div class="chart-frame">
+                <div class="chart-caption">
+                  <span>Distribuição de tempos de atendimento (dados ilustrativos de estudo)</span>
+                  <span id="chart-mode-label">Linha tracejada: Média</span>
+                </div>
+                <svg id="eda-svg" class="eda-svg" viewBox="0 0 520 170" role="img" aria-label="Gráfico interativo de barras mostrando impacto de outliers na média e mediana"></svg>
+              </div>
+
+              <div class="cidr-grid">
+                <div class="metric-box">
+                  <span class="metric-label">Média</span>
+                  <span id="stat-mean" class="metric-value">30.25</span>
+                </div>
+                <div class="metric-box">
+                  <span class="metric-label">Mediana</span>
+                  <span id="stat-median" class="metric-value">22.50</span>
+                </div>
+                <div class="metric-box">
+                  <span class="metric-label">Desvio Padrão</span>
+                  <span id="stat-std" class="metric-value">22.29</span>
+                </div>
+                <div class="metric-box">
+                  <span class="metric-label">Amostras</span>
+                  <span id="stat-count" class="metric-value">8</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ABA 3: DIAGNÓSTICO N1 / S2S -->
+            <div class="lab-pane" data-lab-pane="suporte">
+              <div>
+                <p class="metric-label">Escolha um incidente para percorrer o roteiro de diagnóstico</p>
+                <div class="lab-controls">
+                  <button class="seg-btn is-active" type="button" data-incident="rede">Sem acesso à rede</button>
+                  <button class="seg-btn" type="button" data-incident="ntfs">Acesso negado (NTFS)</button>
+                  <button class="seg-btn" type="button" data-incident="chamado">Falha em estação N1</button>
+                </div>
+              </div>
+
+              <div id="checklist-stack" class="checklist-stack"></div>
+
+              <div class="packet-result">
+                <span id="support-progress" class="packet-status">Etapas verificadas: 0 de 4</span>
+                <p id="support-summary" class="packet-detail">
+                  Marque as etapas acima para simular o diagnóstico estruturado antes do registro de ocorrência.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experiência -->
+    <section id="experiencia" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker">Experiência profissional</span>
+          <h2 class="section-title">Trajetória em suporte técnico</h2>
+        </div>
+
+        <div class="timeline reveal">
+          <article class="timeline-item">
+            <span class="timeline-node" aria-hidden="true"></span>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Suporte Técnico N1</h3>
+                  <p class="timeline-company">AlmavivA Experience</p>
+                </div>
+                <span class="timeline-period">08/2023 – 11/2026</span>
+              </div>
+
+              <ul class="timeline-list">
+                <li>Atendimento e resolução de chamados de suporte técnico de nível 1.</li>
+                <li>Diagnóstico de problemas de hardware, software e conectividade.</li>
+                <li>Atuação em suporte S2S.</li>
+                <li>Comunicação clara com usuários e registro preciso de ocorrências.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projetos -->
+    <section id="projetos" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker">Projetos práticos</span>
+          <h2 class="section-title">Laboratórios e estudos aplicados</h2>
+          <p class="section-subtitle">
+            Atividades desenvolvidas em laboratórios presenciais do SENAC Taubaté e estudos aplicados com foco em infraestrutura segura, monitoramento e análise de dados.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card reveal">
+            <div>
+              <span class="project-category">Segurança e Redes</span>
+              <h3 class="project-title">Laboratório de Firewall com OPNsense e IPFire</h3>
+              <p class="project-desc">
+                Implementação em máquinas virtuais de firewall NGFW com práticas de hardening no OPNsense, regras de filtragem no IPFire, segmentação de sub-redes CIDR e bloqueio de anúncios via DNS com Pi-hole.
+              </p>
+            </div>
+            <div class="project-footer">
+              <ul class="chip-list">
+                <li class="chip">OPNsense</li>
+                <li class="chip">IPFire</li>
+                <li class="chip">Pi-hole</li>
+                <li class="chip">VLANs / CIDR</li>
+              </ul>
+              <p class="project-context">Laboratório prático · SENAC Taubaté</p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div>
+              <span class="project-category">Monitoramento e Virtualização</span>
+              <h3 class="project-title">Monitoramento de Infraestrutura com Zabbix</h3>
+              <p class="project-desc">
+                Implantação de ambiente de monitoramento com Zabbix em servidor Linux virtualizado no Oracle VirtualBox para acompanhamento de disponibilidade, serviços de rede e diagnóstico de conectividade.
+              </p>
+            </div>
+            <div class="project-footer">
+              <ul class="chip-list">
+                <li class="chip">Zabbix</li>
+                <li class="chip">Linux</li>
+                <li class="chip">Oracle VirtualBox</li>
+                <li class="chip">TCP/IP</li>
+              </ul>
+              <p class="project-context">Laboratório prático · SENAC Taubaté</p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div>
+              <span class="project-category">Ciência de Dados</span>
+              <h3 class="project-title">Análise Exploratória de Dados com Python</h3>
+              <p class="project-desc">
+                Estudo de análise univariada e multivariada contemplando tratamento de dados faltantes, detecção de outliers, estatística descritiva, correlação de Pearson e Spearman e gráficos com matplotlib.
+              </p>
+            </div>
+            <div class="project-footer">
+              <ul class="chip-list">
+                <li class="chip">Python</li>
+                <li class="chip">pandas</li>
+                <li class="chip">matplotlib</li>
+                <li class="chip">Estatística Aplicada</li>
+              </ul>
+              <p class="project-context">Estudo aplicado · Sem repositório público</p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div>
+              <span class="project-category">Administração de Sistemas</span>
+              <h3 class="project-title">Ambiente Windows Server com Domínio e NTFS</h3>
+              <p class="project-desc">
+                Estruturação de ambiente de domínio em Windows Server com organização de diretórios, configuração de permissões NTFS por grupo e aplicação de políticas de restrição e segurança de acessos.
+              </p>
+            </div>
+            <div class="project-footer">
+              <ul class="chip-list">
+                <li class="chip">Windows Server</li>
+                <li class="chip">Permissões NTFS</li>
+                <li class="chip">Domínios</li>
+                <li class="chip">Segurança</li>
+              </ul>
+              <p class="project-context">Laboratório prático · SENAC Taubaté</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formação e idiomas -->
+    <section id="formacao" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker">Formação e idiomas</span>
+          <h2 class="section-title">Base acadêmica e comunicação técnica</h2>
+        </div>
+
+        <div class="education-grid">
+          <article class="edu-card reveal">
+            <span class="edu-type">Formação Acadêmica</span>
+            <h3 class="edu-title">Ciência de Dados</h3>
+            <p class="edu-institution">UNINTER</p>
+            <p class="edu-status">Em andamento (cursando)</p>
+          </article>
+
+          <article class="edu-card reveal">
+            <span class="edu-type">Formação Técnica</span>
+            <h3 class="edu-title">Cibersegurança</h3>
+            <p class="edu-institution">SENAC Taubaté</p>
+            <p class="edu-status">Em andamento (cursando)</p>
+          </article>
+
+          <article class="edu-card reveal">
+            <span class="edu-type">Idioma</span>
+            <h3 class="edu-title">Inglês</h3>
+            <p class="edu-institution">Nível intermediário</p>
+            <p class="edu-status">Leitura técnica e compreensão auditiva</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="section">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div>
+            <span class="section-kicker">Contato</span>
+            <h2 class="contact-title">Vamos conversar sobre oportunidades em TI</h2>
+            <p class="contact-text">
+              Estou disponível para processos seletivos nas áreas de Ciência de Dados, Infraestrutura, Redes, Suporte Técnico e Cibersegurança.
+            </p>
+            <div class="contact-email-row">
+              <a href="mailto:ailton102017@gmail.com" class="email-link">ailton102017@gmail.com</a>
+              <button id="copy-email-btn" class="copy-btn" type="button">Copiar e-mail</button>
+            </div>
+          </div>
+
+          <div class="contact-links">
+            <!-- Link do LinkedIn -->
+            <a
+              href="https://www.linkedin.com/in/ailton-carvalho-328384336/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-card-link"
+            >
+              <span class="contact-card-left">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect width="4" height="12" x="2" y="9"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                <span>LinkedIn</span>
+              </span>
+              <span class="contact-card-hint">Abrir perfil</span>
+            </a>
+
+            <!-- Link do GitHub -->
+            <a
+              href="https://github.com/JosephMorgan1001"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-card-link"
+            >
+              <span class="contact-card-left">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                  <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                </svg>
+                <span>GitHub</span>
+              </span>
+              <span class="contact-card-hint">JosephMorgan1001</span>
+            </a>
+
+            <a
+              id="download-cv-btn"
+              href="assets/docs/curriculo-ailton-carvalho.pdf"
+              download="Ailton-Carvalho-Curriculo.pdf"
+              class="contact-card-link"
+            >
+              <span class="contact-card-left">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Currículo (PDF)</span>
+              </span>
+              <span id="download-cv-hint" class="contact-card-hint">Baixar PDF</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Ailton Carvalho de Albuquerque</p>
+      <p>&copy; <span id="current-year">2026</span> · Taubaté, SP</p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const themeToggle = document.getElementById('theme-toggle');
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileDrawer = document.getElementById('mobile-drawer');
+      const copyEmailBtn = document.getElementById('copy-email-btn');
+      const yearEl = document.getElementById('current-year');
+
+      if (yearEl) {
+        yearEl.textContent = String(new Date().getFullYear());
+      }
+
+      /* Tema */
+      const savedTheme = localStorage.getItem('portfolio-theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        root.setAttribute('data-theme', savedTheme);
+      }
+
+      themeToggle?.addEventListener('click', () => {
+        const current = root.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('portfolio-theme', next);
+      });
+
+      /* Menu mobile */
+      const closeMobileMenu = () => {
+        if (!mobileDrawer || !menuToggle) return;
+        mobileDrawer.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      };
+
+      if (menuToggle && mobileDrawer) {
+        menuToggle.addEventListener('click', () => {
+          const isOpen = mobileDrawer.classList.toggle('is-open');
+          menuToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        mobileDrawer.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', closeMobileMenu);
+        });
+      }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeMobileMenu();
+        }
+      });
+
+      /* Copiar e-mail */
+      copyEmailBtn?.addEventListener('click', () => {
+        const email = 'ailton102017@gmail.com';
+        if (navigator.clipboard?.writeText) {
+          navigator.clipboard.writeText(email).then(() => {
+            copyEmailBtn.textContent = 'E-mail copiado!';
+            setTimeout(() => {
+              copyEmailBtn.textContent = 'Copiar e-mail';
+            }, 2200);
+          });
+        } else {
+          copyEmailBtn.textContent = email;
+        }
+      });
+
+      /* Download do currículo */
+      const downloadCvBtn = document.getElementById('download-cv-btn');
+      const downloadCvHint = document.getElementById('download-cv-hint');
+
+      downloadCvBtn?.addEventListener('click', (event) => {
+        const pdfUrl = downloadCvBtn.getAttribute('href');
+        const fileName = downloadCvBtn.getAttribute('download') || 'Ailton-Carvalho-Curriculo.pdf';
+
+        if (!window.fetch || !window.URL?.createObjectURL) {
+          return;
+        }
+
+        event.preventDefault();
+        if (downloadCvHint) {
+          downloadCvHint.textContent = 'Baixando...';
+        }
+
+        fetch(pdfUrl)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Erro ao carregar o PDF');
+            }
+            return response.blob();
+          })
+          .then((blob) => {
+            const blobUrl = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = blobUrl;
+            link.download = fileName;
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            setTimeout(() => URL.revokeObjectURL(blobUrl), 2000);
+
+            if (downloadCvHint) {
+              downloadCvHint.textContent = 'Baixado';
+              setTimeout(() => {
+                downloadCvHint.textContent = 'Baixar PDF';
+              }, 2200);
+            }
+          })
+          .catch(() => {
+            if (downloadCvHint) {
+              downloadCvHint.textContent = 'Baixar PDF';
+            }
+            window.location.assign(pdfUrl);
+          });
+      });
+
+      /* Miniatura e simuladores */
+      const miniatureStage = document.getElementById('miniature-stage');
+      const miniatureHead = document.getElementById('miniature-head');
+      const miniatureEyes = document.getElementById('miniature-eyes');
+      const miniatureSpeech = document.getElementById('miniature-speech');
+      const miniatureBadgeIcon = document.getElementById('miniature-badge-icon');
+      const labSection = document.getElementById('laboratorio');
+      const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
+      const miniatureTips = [
+        'Combino suporte técnico N1 com estudos práticos em Ciência de Dados e Cibersegurança.',
+        'Nos laboratórios do SENAC Taubaté, configurei firewalls OPNsense/IPFire, Zabbix e Windows Server.',
+        'Em Ciência de Dados, utilizo Python, pandas, matplotlib e estatística aplicada para investigar padrões.',
+        'Você pode alternar o tema claro/escuro no topo da página ou testar os simuladores ao lado.'
+      ];
+      let tipIndex = 0;
+
+      if (miniatureStage && miniatureSpeech) {
+        const nextTip = () => {
+          tipIndex = (tipIndex + 1) % miniatureTips.length;
+          miniatureSpeech.textContent = miniatureTips[tipIndex];
+        };
+
+        miniatureStage.addEventListener('click', nextTip);
+        miniatureStage.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            nextTip();
+          }
+        });
+      }
+
+      if (!reducedMotion && labSection && miniatureStage && miniatureHead && miniatureEyes) {
+        labSection.addEventListener('mousemove', (event) => {
+          const rect = miniatureStage.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const dx = Math.max(-1, Math.min(1, (event.clientX - cx) / 260));
+          const dy = Math.max(-1, Math.min(1, (event.clientY - cy) / 260));
+          miniatureEyes.setAttribute('transform', `translate(${(dx * 3.2).toFixed(1)}, ${(dy * 2.2).toFixed(1)})`);
+          miniatureHead.setAttribute('transform', `rotate(${(dx * 2.4).toFixed(1)} 90 90)`);
+        });
+
+        labSection.addEventListener('mouseleave', () => {
+          miniatureEyes.setAttribute('transform', 'translate(0, 0)');
+          miniatureHead.setAttribute('transform', 'rotate(0 90 90)');
+        });
+      }
+
+      const tabButtons = document.querySelectorAll('[data-lab-tab]');
+      const tabPanes = document.querySelectorAll('[data-lab-pane]');
+      const tabSpeechMap = {
+        redes: 'Selecione uma sub-rede ou regra ao lado para ver como estruturo redes segmentadas e seguras.',
+        dados: 'Veja na prática como um único outlier altera a média sem afetar da mesma forma a mediana.',
+        suporte: 'Clique nas etapas do roteiro para simular a triagem técnica que aplico em atendimentos N1 e S2S.'
+      };
+      const badgePathMap = {
+        redes: 'M134 149L142 153V159C142 164 138.5 167.5 134 169C129.5 167.5 126 164 126 159V153L134 149Z',
+        dados: 'M126 166V159M134 166V151M142 166V155',
+        suporte: 'M126 158L131 163L142 152'
+      };
+
+      tabButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-lab-tab');
+          tabButtons.forEach((b) => {
+            const active = b === btn;
+            b.classList.toggle('is-active', active);
+            b.setAttribute('aria-selected', String(active));
+          });
+          tabPanes.forEach((pane) => {
+            pane.classList.toggle('is-active', pane.getAttribute('data-lab-pane') === target);
+          });
+          if (miniatureSpeech && tabSpeechMap[target]) {
+            miniatureSpeech.textContent = tabSpeechMap[target];
+          }
+          if (miniatureBadgeIcon && badgePathMap[target]) {
+            miniatureBadgeIcon.setAttribute('d', badgePathMap[target]);
+          }
+        });
+      });
+
+      /* Redes e firewall */
+      const cidrData = {
+        '24': { mask: '255.255.255.0', hosts: '254', range: '.1 – .254', broadcast: '192.168.10.255', note: 'Com /24 temos uma rede única com 254 endereços utilizáveis.' },
+        '25': { mask: '255.255.255.128', hosts: '126', range: '.1 – .126', broadcast: '192.168.10.127', note: 'Dividindo em /25 criamos duas sub-redes de até 126 hosts cada.' },
+        '26': { mask: '255.255.255.192', hosts: '62', range: '.1 – .62', broadcast: '192.168.10.63', note: 'Com /26 segmentamos em 4 sub-redes menores com 62 hosts por bloco.' }
+      };
+      const packetData = {
+        https: {
+          status: 'Status: Permitido na VLAN interna',
+          detail: 'Tráfego web criptografado liberado pela política de saída do firewall NGFW após inspeção de estado.'
+        },
+        dns: {
+          status: 'Status: Filtrado pelo Pi-hole',
+          detail: 'Consultas DNS passam pelo servidor Pi-hole para bloquear domínios de anúncios e rastreadores antes da resolução.'
+        },
+        ssh: {
+          status: 'Status: Bloqueado na interface WAN',
+          detail: 'Conexões SSH externas são descartadas pelo hardening do OPNsense; acesso administrativo fica restrito à rede interna.'
+        }
+      };
+
+      document.querySelectorAll('[data-cidr]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const prefix = btn.getAttribute('data-cidr');
+          const info = cidrData[prefix];
+          if (!info) return;
+          document.querySelectorAll('[data-cidr]').forEach((b) => b.classList.toggle('is-active', b === btn));
+          document.getElementById('cidr-mask').textContent = info.mask;
+          document.getElementById('cidr-hosts').textContent = info.hosts;
+          document.getElementById('cidr-range').textContent = info.range;
+          document.getElementById('cidr-broadcast').textContent = info.broadcast;
+          if (miniatureSpeech) miniatureSpeech.textContent = info.note;
+        });
+      });
+
+      document.querySelectorAll('[data-packet]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const key = btn.getAttribute('data-packet');
+          const info = packetData[key];
+          if (!info) return;
+          document.querySelectorAll('[data-packet]').forEach((b) => b.classList.toggle('is-active', b === btn));
+          document.getElementById('packet-status').textContent = info.status;
+          document.getElementById('packet-detail').textContent = info.detail;
+          if (miniatureSpeech) miniatureSpeech.textContent = info.detail;
+        });
+      });
+
+      /* Dados e estatística */
+      const edaBase = [18, 22, 24, 21, 25, 23, 20];
+      let includeOutlier = true;
+      let lineMode = 'mean';
+      const toggleOutlierBtn = document.getElementById('toggle-outlier-btn');
+      const toggleLineBtn = document.getElementById('toggle-line-btn');
+      const edaSvg = document.getElementById('eda-svg');
+
+      const renderEdaChart = () => {
+        if (!edaSvg) return;
+        const values = includeOutlier ? [...edaBase, 89] : [...edaBase];
+        const mean = values.reduce((acc, v) => acc + v, 0) / values.length;
+        const sorted = [...values].sort((a, b) => a - b);
+        const mid = Math.floor(sorted.length / 2);
+        const median = sorted.length % 2 !== 0 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+        const variance = values.reduce((acc, v) => acc + (v - mean) ** 2, 0) / values.length;
+        const std = Math.sqrt(variance);
+
+        document.getElementById('stat-mean').textContent = mean.toFixed(2);
+        document.getElementById('stat-median').textContent = median.toFixed(2);
+        document.getElementById('stat-std').textContent = std.toFixed(2);
+        document.getElementById('stat-count').textContent = String(values.length);
+
+        const maxVal = 95;
+        const chartH = 130;
+        const topPad = 14;
+        const barW = 36;
+        const gap = 22;
+        const startX = 28;
+        const refVal = lineMode === 'mean' ? mean : median;
+        const refY = topPad + chartH - (refVal / maxVal) * chartH;
+
+        let markup = '';
+        values.forEach((val, idx) => {
+          const x = startX + idx * (barW + gap);
+          const h = Math.max(4, (val / maxVal) * chartH);
+          const y = topPad + chartH - h;
+          const fill = val === 89 ? '#f59e0b' : 'var(--accent)';
+          markup += `<rect x="${x}" y="${y.toFixed(1)}" width="${barW}" height="${h.toFixed(1)}" rx="5" fill="${fill}" opacity="0.85"></rect>`;
+          markup += `<text x="${x + barW / 2}" y="${topPad + chartH + 16}" text-anchor="middle" font-size="11" fill="var(--text-muted)" font-family="var(--font-mono)">#${idx + 1}</text>`;
+          markup += `<text x="${x + barW / 2}" y="${(y - 4).toFixed(1)}" text-anchor="middle" font-size="10" fill="var(--text-secondary)" font-family="var(--font-mono)">${val}</text>`;
+        });
+
+        const label = `${lineMode === 'mean' ? 'Média' : 'Mediana'}: ${refVal.toFixed(1)}`;
+        markup += `<line x1="16" y1="${refY.toFixed(1)}" x2="504" y2="${refY.toFixed(1)}" stroke="var(--text-primary)" stroke-width="1.8" stroke-dasharray="6 4"></line>`;
+        markup += `<text x="502" y="${Math.max(12, refY - 6).toFixed(1)}" text-anchor="end" font-size="11" font-weight="600" fill="var(--text-primary)" font-family="var(--font-mono)">${label}</text>`;
+        edaSvg.innerHTML = markup;
+      };
+
+      toggleOutlierBtn?.addEventListener('click', () => {
+        includeOutlier = !includeOutlier;
+        toggleOutlierBtn.textContent = includeOutlier ? 'Remover outlier (89)' : 'Incluir outlier (89)';
+        toggleOutlierBtn.classList.toggle('is-active', includeOutlier);
+        renderEdaChart();
+        if (miniatureSpeech) {
+          miniatureSpeech.textContent = includeOutlier
+            ? 'Com o outlier (89), a média sobe para 30.25 enquanto a mediana permanece em 22.50.'
+            : 'Sem o outlier, média (21.86) e mediana (22.00) ficam praticamente alinhadas.';
+        }
+      });
+
+      toggleLineBtn?.addEventListener('click', () => {
+        lineMode = lineMode === 'mean' ? 'median' : 'mean';
+        toggleLineBtn.textContent = lineMode === 'mean' ? 'Mostrar mediana no gráfico' : 'Mostrar média no gráfico';
+        document.getElementById('chart-mode-label').textContent = lineMode === 'mean' ? 'Linha tracejada: Média' : 'Linha tracejada: Mediana';
+        toggleLineBtn.classList.toggle('is-active', lineMode === 'median');
+        renderEdaChart();
+      });
+
+      renderEdaChart();
+
+      /* Suporte N1 / S2S */
+      const incidents = {
+        rede: {
+          steps: [
+            'Verificar cabo RJ45, conector keystone e LED da placa de rede',
+            'Checar IP, máscara, gateway e resolução DNS na estação',
+            'Validar VLAN e regras no roteador/switch gerenciável',
+            'Confirmar conectividade ao usuário e registrar ocorrência'
+          ],
+          done: 'Diagnóstico de conectividade concluído da camada física até a validação DNS.'
+        },
+        ntfs: {
+          steps: [
+            'Identificar usuário, domínio e diretório corporativo solicitado',
+            'Conferir pertencimento a grupos de segurança no Windows Server',
+            'Validar herança e restrições de permissões NTFS na pasta',
+            'Orientar o usuário sobre o acesso e registrar atendimento'
+          ],
+          done: 'Permissões NTFS e regras de domínio verificadas com segurança de acesso mantida.'
+        },
+        chamado: {
+          steps: [
+            'Ouvir relato do usuário com clareza para reproduzir o erro',
+            'Isolar se a origem está em hardware, sistema operacional ou software',
+            'Aplicar correção de primeiro nível (N1) ou escalonar via S2S',
+            'Documentar causa e solução de forma objetiva no chamado'
+          ],
+          done: 'Atendimento estruturado finalizado com comunicação clara e registro completo.'
+        }
+      };
+
+      let activeIncident = 'rede';
+      let checkedSteps = [false, false, false, false];
+      const checklistStack = document.getElementById('checklist-stack');
+
+      const renderChecklist = () => {
+        if (!checklistStack) return;
+        const data = incidents[activeIncident];
+        checklistStack.innerHTML = '';
+
+        data.steps.forEach((label, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = `check-item${checkedSteps[idx] ? ' is-checked' : ''}`;
+          btn.innerHTML = `<span class="check-box" aria-hidden="true">${checkedSteps[idx] ? '✓' : ''}</span><span>${idx + 1}. ${label}</span>`;
+          btn.addEventListener('click', () => {
+            checkedSteps[idx] = !checkedSteps[idx];
+            renderChecklist();
+          });
+          checklistStack.appendChild(btn);
+        });
+
+        const count = checkedSteps.filter(Boolean).length;
+        document.getElementById('support-progress').textContent = `Etapas verificadas: ${count} de ${data.steps.length}`;
+        document.getElementById('support-summary').textContent = count === data.steps.length
+          ? data.done
+          : 'Marque as etapas acima para simular o diagnóstico estruturado antes do registro de ocorrência.';
+      };
+
+      document.querySelectorAll('[data-incident]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          activeIncident = btn.getAttribute('data-incident');
+          checkedSteps = [false, false, false, false];
+          document.querySelectorAll('[data-incident]').forEach((b) => b.classList.toggle('is-active', b === btn));
+          renderChecklist();
+        });
+      });
+
+      renderChecklist();
+
+      /* Scroll reveal */
+      const revealEls = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -30px 0px' }
+        );
+
+        revealEls.forEach((el) => revealObserver.observe(el));
+      } else {
+        revealEls.forEach((el) => el.classList.add('is-visible'));
+      }
+
+      /* Destaque do link ativo */
+      const sections = document.querySelectorAll('main section[id]');
+      const desktopLinks = document.querySelectorAll('.nav-desktop .nav-link');
+
+      if ('IntersectionObserver' in window && sections.length && desktopLinks.length) {
+        const navObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const activeId = entry.target.getAttribute('id');
+                desktopLinks.forEach((link) => {
+                  link.classList.toggle('is-active', link.getAttribute('href') === `#${activeId}`);
+                });
+              }
+            });
+          },
+          { rootMargin: '-40% 0px -50% 0px' }
+        );
+
+        sections.forEach((sec) => navObserver.observe(sec));
+      }
+    })();
+  </script>
+</body>
+</html>
